@@ -20,9 +20,15 @@ const page = () => {
             <h2 className='text-3xl'> Blogs Page</h2>
             <ul>
                 {
-                    blogs.map((blog)=> 
-                    <li className='my-4' key={blog.id} >
-                        <Link href={`/blogs/${blog.id}`} > {blog.title} </Link> 
+                    blogs.map(({id, title, body})=> 
+                    <li className='my-4' key={id} >
+                        <Link href={{
+                            pathname:`/blogs/${id}`,
+                            query:{
+                                title: title,
+                                body: body,
+                            },
+                        }} key={id} > {title} </Link> 
                     </li> )
                 }
             </ul>
